@@ -419,7 +419,7 @@ firstPromise()
     function readFileAsync(path) {
         return new Promise((resolve, reject) => {
             fs.readFile(path, "utf8", (err, data) => {
-                if (err) reject(err);     // forward error
+                if (err) reject(err);    
                 else resolve(data);
             });
         });
