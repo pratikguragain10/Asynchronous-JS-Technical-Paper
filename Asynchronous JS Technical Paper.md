@@ -141,7 +141,7 @@
 
 ---
 
-## 10. What are different states of a Promise -pending, fulfilled, rejected
+## 10. What are different states of a Promise `pending`, `fulfilled`, `rejected` ?
 
 - | State |	Description |
   | Pending | waiting |
