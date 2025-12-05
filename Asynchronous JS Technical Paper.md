@@ -143,9 +143,10 @@
 
 ## 10. What are different states of a Promise pending, fulfilled, rejected ?
 
--  | State |	Description |
+-  | State | Description |
+   | ----- | ----------- |
    | Pending | waiting |
-   | Fulfilled |	resolve() executed |
+   | Fulfilled | resolve() executed |
    | Rejected | reject() executed |
 
 ---
