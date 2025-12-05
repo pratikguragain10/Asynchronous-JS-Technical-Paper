@@ -263,7 +263,7 @@
 
 ## 23. Promisifying Callback Functions
 
-    ``` javascript
+-    ``` javascript
         function wait(ms){
             return new Promise(resolve => setTimeout(resolve, ms));
         }
