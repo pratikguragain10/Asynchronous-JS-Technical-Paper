@@ -231,19 +231,221 @@
 
 ---
 
-## 18. Handling Multiple Promises by Chaining
+## 18. How to consume multiple promises by chaining?
+
+- To consume multiple promises by chaining, you return a new promise inside `.then()` so the next `.then()` waits for it to resolve.
+
+- Code Example
+
+``` javascript
+firstPromise()
+  .then(result1 => {
+    console.log(result1);
+    return secondPromise();   
+  })
+  .then(result2 => {
+    console.log(result2);
+    return thirdPromise();
+  })
+  .then(result3 => {
+    console.log(result3);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+  });
+
+```
+
+---
+
+## 19. How to consume multiple promises by Promise.all?
+
+- To consume multiple promises with Promise.all, you pass an array of promises to it.
+- Promise.all waits for all promises to resolve, then returns an array of results in the same order.
 
 - Code Example
 
     ``` javascript
-    p1.then(() => p2())
-      .then(() => p3())
-      .catch(console.error);
+    Promise.all([promise1(), promise2(), promise3()])
+           .then(results => {
+                    console.log(results); 
+    })
+           .catch(error => {
+                    console.error("Error:", error);
+    });
     ```
 
 ---
 
-## 19. Promise.all()
+## 20. How to do error handling when using promises?
+
+- Error handling in promises is mainly done using .catch(), and by returning / throwing errors properly in the chain.
+
+### - Using .catch() at the end
+
+    ``` javascript
+        doSomething()
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.error("Error occurred:", error);
+            });
+    ```
+
+- Any error thrown in any .then() jumps to .catch().
+
+### - Chaining with catch
+
+    ``` javascript
+        doSomething()
+            .then(result => {
+                if (!result) throw new Error("Invalid result");
+                return doNext(result);
+            })
+            .then(r => console.log(r))
+            .catch(err => console.log("Caught:", err));
+    ```
+
+### - Using .catch() after specific .then()
+
+- You can isolate error handling to part of the chain:
+
+    ``` javascript
+        doStep1()
+            .then(res => doStep2(res))
+            .catch(err => console.log("Error in step 1 or 2"))
+            .then(() => doStep3())
+            .catch(err => console.log("Error in step 3"));
+    ```
+
+### - Using .finally()
+
+- Used for cleanup (runs whether resolved or rejected):
+
+    ``` javascript
+        doTask()
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+            .finally(() => console.log("Done!"));
+    ```
+
+### - Handling errors in Promise.all
+
+    ``` javascript
+        Promise.all([p1(), p2(), p3()])
+               .then(results => console.log(results))
+               .catch(err => console.log("One promise failed:", err));
+    ```
+
+- If any promise rejects → catch is triggered.
+
+### - Using async/await try–catch
+
+    ``` javascript
+        async function run() {
+            try {
+                const r1 = await p1();
+                const r2 = await p2();
+                console.log(r1, r2);
+            } catch (err) {
+                console.error("Error:", err);
+            }
+        }
+        run();
+    ```
+
+---
+
+## 21. Why is error handling the most important part of using a promise?
+
+- Key Reasons:
+
+    - Promises run asynchronously
+        Errors may occur when backend responses fail, network issues happen, or invalid data is returned. Without .catch(), you won’t know something went wrong.
+
+    - Prevents breaking the entire promise chain
+        If an error occurs in any .then(), the rest of the chain stops and .catch() handles it cleanly instead of crashing the program.
+
+    - Helps maintain predictable flow
+        Proper error handling ensures you always know what happens when something fails, so you can retry, log errors, or show proper messages.
+
+    - Avoids uncaught promise rejections
+        Uncaught errors can cause warnings or crashes like:
+        ``` comment
+        UnhandledPromiseRejectionWarning
+        ```
+
+    - Improves user experience
+        Instead of the application freezing, you can:
+            - Show a friendly message
+            - Retry an API call
+            - Perform fallback operations
+
+    - Example
+
+        ``` javascript
+        fetchData()
+            .then(res => process(res))
+            .catch(err => {
+                console.error("Something went wrong:", err);
+                showErrorUI();
+        });
+        ```
+
+---
+
+## 22. How to promisify an asynchronous callbacks based function - eg. setTimeout, fs.readFile
+
+- To promisify an asynchronous callback-based function means to wrap it inside a Promise so you can use .then(), .catch(), or async/await.
+
+- Promisify setTimeout Example
+    ``` javascript
+    function wait(ms) {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                resolve(`Waited for ${ms} ms`);
+            }, ms);
+        });
+    }
+
+    wait(1000).then(msg => console.log(msg));
+    ```
+
+- Promisify fs.readFile (Node.js)
+
+    ``` javascript
+    const fs = require("fs");
+    function readFileAsync(path) {
+        return new Promise((resolve, reject) => {
+            fs.readFile(path, "utf8", (err, data) => {
+                if (err) reject(err);     // forward error
+                else resolve(data);
+            });
+        });
+    }
+
+    readFileAsync("test.txt")
+        .then(content => console.log(content))
+        .catch(err => console.log("Error:", err));
+    ```
+
+- Using util.promisify (built-in Node utility)
+
+    ``` javascript
+    const fs = require("fs");
+    const util = require("util");
+
+    const readFilePromise = util.promisify(fs.readFile);
+
+    readFilePromise("test.txt", "utf8")
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+    ```
+
+---
+
+## 23.1. Promise.all()
 
 - Runs promises in parallel and waits for all to complete.
 - Fails if any promise fails.
@@ -256,7 +458,7 @@
 
 ---
 
-## 20. Promise.allSettled()
+## 23.2. Promise.allSettled()
 
 - Code Example
 
@@ -267,7 +469,7 @@
 
 ---
 
-## 21. Promise.any()
+## 23.3. Promise.any()
 
 - Resolves when the first resolved promise arrives.
 
@@ -277,7 +479,7 @@
 
 ---
 
-## 22. Promise.race()
+## 23.4. Promise.race()
 
 - Returns result of the first completed promise (success or failure).
 
@@ -287,7 +489,7 @@
 
 ---
 
-## 23. Promisifying Callback Functions
+## 23.5. Promisifying Callback Functions
 
 - Code Example
 
@@ -300,7 +502,7 @@
 
 ---
 
-## 24. Promise.resolve and Promise.reject
+## 23.6. Promise.resolve and Promise.reject
 
 - Code Example
 
@@ -308,14 +510,6 @@
     Promise.resolve("Done");
     Promise.reject("Error");
     ```
-
----
-
-## 25. Why Error Handling Is Important ?
-
-- Prevents breaking app flow
-- Improves debugging
-- Protects user experience
 
 ---
 
