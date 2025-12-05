@@ -200,6 +200,8 @@
 
 ## 15. What happens when an Error gets thrown inside .then when there is a .catch ?
 
+- If an error is thrown inside `.then`, it immediately skips the remaining `.then` blocks and goes to the nearest `.catch` handler.
+
 - Code Example
 
     ``` javascript
@@ -210,6 +212,8 @@
 ---
 
 ## 16. What happens when an Error gets thrown inside .then when there is no .catch ?
+
+- If an error is thrown inside `.then` and there is no `.catch`, the promise becomes rejected and results in an unhandled promise rejection.
 
 - Code Example
 
@@ -223,7 +227,7 @@
 
 ## 17. Why must .catch be placed towards the end of the promise chain?
 
-- It acts as a global error handler for the entire chain.
+- Because placing `.catch` at the end ensures it can handle any errors that occur in any preceding `.then` block throughout the promise chain.
 
 ---
 
