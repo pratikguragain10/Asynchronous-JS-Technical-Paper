@@ -295,7 +295,7 @@ firstPromise()
 
 - Any error thrown in any .then() jumps to .catch().
 
-### - Chaining with catch
+- ### Chaining with catch
 
     ``` javascript
         doSomething()
@@ -307,7 +307,7 @@ firstPromise()
             .catch(err => console.log("Caught:", err));
     ```
 
-### - Using .catch() after specific .then()
+- ### Using .catch() after specific .then()
 
 - You can isolate error handling to part of the chain:
 
@@ -319,7 +319,7 @@ firstPromise()
             .catch(err => console.log("Error in step 3"));
     ```
 
-### - Using .finally()
+- ### Using .finally()
 
 - Used for cleanup (runs whether resolved or rejected):
 
@@ -330,7 +330,7 @@ firstPromise()
             .finally(() => console.log("Done!"));
     ```
 
-### - Handling errors in Promise.all
+- ### Handling errors in Promise.all
 
     ``` javascript
         Promise.all([p1(), p2(), p3()])
@@ -340,7 +340,7 @@ firstPromise()
 
 - If any promise rejects → catch is triggered.
 
-### - Using async/await try–catch
+- ### Using async/await try–catch
 
     ``` javascript
         async function run() {
