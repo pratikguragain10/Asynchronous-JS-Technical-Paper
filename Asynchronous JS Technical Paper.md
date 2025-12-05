@@ -422,7 +422,7 @@ firstPromise()
         return new Promise((resolve, reject) => {
             fs.readFile(path, "utf8", (err, data) => {
                 if (err) reject(err);    
-                else resolve(data);
+                else resolve(data); 
             });
         });
     }
@@ -493,20 +493,7 @@ firstPromise()
 
 ---
 
-### 23.5. Promisifying Callback Functions
-
-- Code Example
-
-    ``` javascript
-    function wait(ms){
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-    wait(2000).then(() => console.log("Done"));
-    ```
-
----
-
-### 23.6. Promise.resolve and Promise.reject
+### 23.5. Promise.resolve and Promise.reject
 
 - Code Example
 
