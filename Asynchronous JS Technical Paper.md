@@ -2,7 +2,7 @@
 
 ---
 
-## 1. How JavaScript Executes Code
+## 1. How JavaScript Executes Code ?
 
 - JavaScript is a single-threaded and synchronous language by default.
 - It uses a Call Stack to execute code line by line.
@@ -23,7 +23,7 @@
 
 ---
 
-## 2. Sync vs Async
+## 2. What is diff between Sync & Async ?
 
 - | Feature | Synchronous | Asynchronous |
   | ------- | ----------- | ------------ |
@@ -46,7 +46,7 @@
 
 ---
 
-## 3. Ways to Make Code Asynchronous
+## 3. What are the ways to make the code Async?
 
 - setTimeout()
 - setInterval()
@@ -57,7 +57,7 @@
 
 ---
 
-## 4. What Are Web Browser APIs?
+## 4. What are Web Browser APIs?
 
 - They are APIs provided by browsers to perform complex tasks without blocking JS.
 - They run outside JavaScript engine.
@@ -72,7 +72,7 @@
 
 ---
 
-## 5. What Is Event Loop?
+## 5. What is event loop?
 
 - The Event Loop manages asynchronous callbacks.
 - It checks the Call Stack, and if empty, pushes tasks from the Callback Queue / Microtask queue into it.
@@ -85,7 +85,7 @@
 
 ---
 
-## 6. What Is Callback Hell?
+## 6. What is a callback hell ?
 
 - A situation where nested callbacks create unreadable code.
 
@@ -105,7 +105,7 @@
 
 ---
 
-## 7. What Is Inversion of Control?
+## 7. What is inversion of control in callbacks?
 
 - When you pass a callback to another function, you lose control of when/how it runs.
 
@@ -123,13 +123,13 @@
 
 ---
 
-## 8. What Is a Promise?
+## 8. What is a Promise ?
 
 - A Promise is an object representing the eventual completion or failure of an asynchronous task.
 
 ---
 
-## 9. How to Create a Promise ?
+## 9. How to create a new promise ?
 
 - Code Example
 
@@ -141,7 +141,7 @@
 
 ---
 
-## 10. States of a Promise
+## 10. What are different states of a Promise -pending, fulfilled, rejected
 - | State |	Description |
   | Pending | waiting |
   | Fulfilled |	resolve() executed |
@@ -149,7 +149,7 @@
 
 ---
 
-## 11. How to Consume an Existing Promise ?
+## 11. How to consume an existing promise ?
 
 - Code Example
 
@@ -164,7 +164,7 @@
 
 ---
 
-## 12. How to Chain Promises using .then ?
+## 12. How to chain promises using .then ?
 
 - Code Example
 
@@ -177,7 +177,7 @@
 
 ---
 
-## 13. Error Handling Using .catch()
+## 13. How to handle errors in a promise chain using .catch ?
 
 - Code Example
 
@@ -198,7 +198,7 @@
 
 ---
 
-## 15. What happens when an Error gets thrown inside .then when there is a .catch ?
+## 15. What happens when an Error gets thrown inside .then when there is a `.catch` ?
 
 - If an error is thrown inside `.then`, it immediately skips the remaining `.then` blocks and goes to the nearest `.catch` handler.
 
@@ -211,7 +211,7 @@
 
 ---
 
-## 16. What happens when an Error gets thrown inside .then when there is no .catch ?
+## 16. What happens when an Error gets thrown inside `.then` when there is no `.catch` ?
 
 - If an error is thrown inside `.then` and there is no `.catch`, the promise becomes rejected and results in an unhandled promise rejection.
 
@@ -225,7 +225,7 @@
 
 ---
 
-## 17. Why must .catch be placed towards the end of the promise chain?
+## 17. Why must `.catch` be placed towards the end of the promise chain?
 
 - Because placing `.catch` at the end ensures it can handle any errors that occur in any preceding `.then` block throughout the promise chain.
 
@@ -395,7 +395,7 @@ firstPromise()
 
 ---
 
-## 22. How to promisify an asynchronous callbacks based function - eg. setTimeout, fs.readFile
+## 22. How to promisify an asynchronous callbacks based function - eg `. setTimeout`, `fs.readFile` ?
 
 - To promisify an asynchronous callback-based function means to wrap it inside a Promise so you can use .then(), .catch(), or async/await.
 
@@ -445,7 +445,9 @@ firstPromise()
 
 ---
 
-## 23.1. Promise.all()
+## 23. How to use the following promise based functions ?
+
+### 23.1. Promise.all()
 
 - Runs promises in parallel and waits for all to complete.
 - Fails if any promise fails.
@@ -458,7 +460,7 @@ firstPromise()
 
 ---
 
-## 23.2. Promise.allSettled()
+### 23.2. Promise.allSettled()
 
 - Code Example
 
@@ -469,7 +471,7 @@ firstPromise()
 
 ---
 
-## 23.3. Promise.any()
+### 23.3. Promise.any()
 
 - Resolves when the first resolved promise arrives.
 
@@ -479,7 +481,7 @@ firstPromise()
 
 ---
 
-## 23.4. Promise.race()
+### 23.4. Promise.race()
 
 - Returns result of the first completed promise (success or failure).
 
@@ -489,7 +491,7 @@ firstPromise()
 
 ---
 
-## 23.5. Promisifying Callback Functions
+### 23.5. Promisifying Callback Functions
 
 - Code Example
 
@@ -502,7 +504,7 @@ firstPromise()
 
 ---
 
-## 23.6. Promise.resolve and Promise.reject
+### 23.6. Promise.resolve and Promise.reject
 
 - Code Example
 
