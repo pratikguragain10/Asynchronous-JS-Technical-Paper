@@ -119,7 +119,7 @@
 
 ---
 
-## Promises
+# Promises
 
 ---
 
@@ -160,7 +160,7 @@
 
 ---
 
-## Promise Chaining
+# Promise Chaining
 
 ---
 
