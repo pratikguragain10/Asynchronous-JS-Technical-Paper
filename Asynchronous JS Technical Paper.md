@@ -397,7 +397,7 @@ firstPromise()
 
 ---
 
-## 22. How to promisify an asynchronous callbacks based function - eg . setTimeout, fs.readFile ?
+## 22. How to promisify an asynchronous callbacks based function - eg. setTimeout, fs.readFile ?
 
 - To promisify an asynchronous callback-based function means to wrap it inside a Promise so you can use .then(), .catch(), or async/await.
 
