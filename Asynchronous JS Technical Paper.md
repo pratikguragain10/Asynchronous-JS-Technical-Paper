@@ -158,27 +158,33 @@
 
 ## 12. How to Chain Promises ?
 
--    ``` javascript
-         p.then(data => {
-             console.log(data);
-             return "Step 2";
-         }).then(next => console.log(next));
-     ```
+- Code Example
+
+    ``` javascript
+        p.then(data => {
+            console.log(data);
+            return "Step 2";
+        }).then(next => console.log(next));
+    ```
 
 ---
 
 ## 13. Error Handling Using .catch()
 
--    ``` javascript
-         p.then(res => JSON.parse(res))
-          .catch(err => console.log("Error:", err));
-     ```
+- Code Example
+
+    ``` javascript
+        p.then(res => JSON.parse(res))
+         .catch(err => console.log("Error:", err));
+    ```
 
 ---
 
 ## 14. Finally in Promise Chain
 
--   ``` javascript
+- Code Example
+
+    ``` javascript
         p.finally(() => console.log("Always runs"));
     ```
 
@@ -186,7 +192,9 @@
 
 ## 15. Error Inside .then() With .catch()
 
--   ``` javascript
+- Code Example
+
+    ``` javascript
         p.then(() => { throw new Error("Failed"); })
          .catch(err => console.log(err.message));
     ```
@@ -195,7 +203,9 @@
 
 ## 16. Error Inside .then() Without .catch()
 
--   ``` javascript
+- Code Example
+
+    ``` javascript
         p.then(() => { throw new Error("Error"); });
     ```
 
@@ -211,7 +221,9 @@
 
 ## 18. Handling Multiple Promises by Chaining
 
--   ``` javascript
+- Code Example
+
+    ``` javascript
         p1.then(() => p2())
           .then(() => p3())
           .catch(console.error);
@@ -234,7 +246,9 @@
 
 ## 20. Promise.allSettled()
 
--   ``` javascript
+- Code Example
+
+    ``` javascript
         Promise.allSettled([p1, p2])
                .then(console.log);
     ```
@@ -263,18 +277,22 @@
 
 ## 23. Promisifying Callback Functions
 
--    ``` javascript
+- Code Example
+
+    ``` javascript
         function wait(ms){
             return new Promise(resolve => setTimeout(resolve, ms));
         }
         wait(2000).then(() => console.log("Done"));
-     ```
+    ```
 
 ---
 
 ## 24. Promise.resolve and Promise.reject
 
--   ``` javascript
+- Code Example
+
+    ``` javascript
         Promise.resolve("Done");
         Promise.reject("Error");
     ```
