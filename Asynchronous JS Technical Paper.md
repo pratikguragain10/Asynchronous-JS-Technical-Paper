@@ -281,7 +281,7 @@ firstPromise()
 
 - Error handling in promises is mainly done using .catch(), and by returning / throwing errors properly in the chain.
 
-### - Using .catch() at the end
+- ### Using .catch() at the end
 
     ``` javascript
         doSomething()
