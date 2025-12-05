@@ -11,14 +11,14 @@
 - Simple Example
 
     ``` javascript
-        function a(){ console.log("A"); }
-        function b(){ console.log("B"); }
-        a();
-        b();
+    function a(){ console.log("A"); }
+    function b(){ console.log("B"); }
+    a();
+    b();
     
-        Output:
-            A
-            B
+    Output:
+    A
+    B
     ```
 
 ---
@@ -34,14 +34,14 @@
 - Simple Example
 
     ``` javascript
-        console.log("Start");
-        setTimeout(() => console.log("Async Task"), 2000);
-        console.log("End");
+    console.log("Start");
+    setTimeout(() => console.log("Async Task"), 2000);
+    console.log("End");
         
-        Output:
-            Start
-            End
-            Async Task
+    Output:
+    Start
+    End
+    Async Task
     ```
 
 ---
@@ -80,7 +80,7 @@
 - Diagram
 
     ``` Diagram
-        Call Stack ⬅ Event Loop ⬅ Callback Queue ⬅ Web APIs
+    Call Stack ⬅ Event Loop ⬅ Callback Queue ⬅ Web APIs
     ```
 
 ---
@@ -92,13 +92,13 @@
 - Simple Example
 
     ``` javascript
+    setTimeout(() => {
         setTimeout(() => {
             setTimeout(() => {
-                setTimeout(() => {
-                    console.log("Done");
-                }, 1000);
+                console.log("Done");
             }, 1000);
         }, 1000);
+    }, 1000);
     ```
 
 - Hard to maintain and debug.
@@ -112,9 +112,9 @@
 - Simple Example
 
     ``` javascript
-        function register(cb){
-            cb(); // caller decides when callback runs
-        }
+    function register(cb){
+        cb(); // caller decides when callback runs
+    }
     ```
 
 ---
@@ -130,10 +130,10 @@
 - Code Example
 
     ``` javascript
-        const p = new Promise((resolve, reject) => {
-            let success = true;
-            success ? resolve("Done") : reject("Failed");
-        });
+    const p = new Promise((resolve, reject) => {
+        let success = true;
+        success ? resolve("Done") : reject("Failed");
+    });
 
 ---
 
@@ -150,8 +150,8 @@
 - Code Example
 
     ``` javascript
-        p.then(result => console.log(result))
-         .catch(error => console.log(error));
+    p.then(result => console.log(result))
+     .catch(error => console.log(error));
     ```
 
 ---
@@ -161,10 +161,10 @@
 - Code Example
 
     ``` javascript
-        p.then(data => {
-            console.log(data);
-            return "Step 2";
-        }).then(next => console.log(next));
+    p.then(data => {
+        console.log(data);
+        return "Step 2";
+    }).then(next => console.log(next));
     ```
 
 ---
@@ -174,8 +174,8 @@
 - Code Example
 
     ``` javascript
-        p.then(res => JSON.parse(res))
-         .catch(err => console.log("Error:", err));
+    p.then(res => JSON.parse(res))
+     .catch(err => console.log("Error:", err));
     ```
 
 ---
@@ -185,7 +185,7 @@
 - Code Example
 
     ``` javascript
-        p.finally(() => console.log("Always runs"));
+    p.finally(() => console.log("Always runs"));
     ```
 
 ---
@@ -195,8 +195,8 @@
 - Code Example
 
     ``` javascript
-        p.then(() => { throw new Error("Failed"); })
-         .catch(err => console.log(err.message));
+    p.then(() => { throw new Error("Failed"); })
+     .catch(err => console.log(err.message));
     ```
 
 ---
@@ -206,7 +206,7 @@
 - Code Example
 
     ``` javascript
-        p.then(() => { throw new Error("Error"); });
+    p.then(() => { throw new Error("Error"); });
     ```
 
 -  Result: unhandled promise rejection
@@ -224,9 +224,9 @@
 - Code Example
 
     ``` javascript
-        p1.then(() => p2())
-          .then(() => p3())
-          .catch(console.error);
+    p1.then(() => p2())
+      .then(() => p3())
+      .catch(console.error);
     ```
 
 ---
@@ -237,9 +237,9 @@
 - Fails if any promise fails.
 
     ``` javascript
-        Promise.all([p1, p2, p3])
-               .then(console.log)
-               .catch(console.error);
+    Promise.all([p1, p2, p3])
+           .then(console.log)
+           .catch(console.error);
     ```
 
 ---
@@ -249,8 +249,8 @@
 - Code Example
 
     ``` javascript
-        Promise.allSettled([p1, p2])
-               .then(console.log);
+    Promise.allSettled([p1, p2])
+           .then(console.log);
     ```
 
 ---
@@ -260,7 +260,7 @@
 - Resolves when the first resolved promise arrives.
 
     ``` javascript
-        Promise.any([p1, p2]).then(console.log);
+    Promise.any([p1, p2]).then(console.log);
     ```
 
 ---
@@ -270,7 +270,7 @@
 - Returns result of the first completed promise (success or failure).
 
     ``` javascript
-        Promise.race([p1, p2]).then(console.log);
+    Promise.race([p1, p2]).then(console.log);
     ```
 
 ---
@@ -280,10 +280,10 @@
 - Code Example
 
     ``` javascript
-        function wait(ms){
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-        wait(2000).then(() => console.log("Done"));
+    function wait(ms){
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    wait(2000).then(() => console.log("Done"));
     ```
 
 ---
@@ -293,8 +293,8 @@
 - Code Example
 
     ``` javascript
-        Promise.resolve("Done");
-        Promise.reject("Error");
+    Promise.resolve("Done");
+    Promise.reject("Error");
     ```
 
 ---
