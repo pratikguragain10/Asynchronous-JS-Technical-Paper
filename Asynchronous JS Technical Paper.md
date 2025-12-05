@@ -113,9 +113,13 @@
 
     ``` javascript
     function register(cb){
-        cb(); // caller decides when callback runs
+        cb(); 
     }
     ```
+
+---
+
+## Promises
 
 ---
 
@@ -156,7 +160,11 @@
 
 ---
 
-## 12. How to Chain Promises ?
+## Promise Chaining
+
+---
+
+## 12. How to Chain Promises using .then ?
 
 - Code Example
 
@@ -180,7 +188,7 @@
 
 ---
 
-## 14. Finally in Promise Chain
+## 14. Finally block in a Promise Chain
 
 - Code Example
 
@@ -190,7 +198,7 @@
 
 ---
 
-## 15. Error Inside .then() With .catch()
+## 15. What happens when an Error gets thrown inside .then when there is a .catch ?
 
 - Code Example
 
@@ -201,7 +209,7 @@
 
 ---
 
-## 16. Error Inside .then() Without .catch()
+## 16. What happens when an Error gets thrown inside .then when there is no .catch ?
 
 - Code Example
 
@@ -213,7 +221,7 @@
 
 ---
 
-## 17. Why .catch() Must Be at End ?
+## 17. Why must .catch be placed towards the end of the promise chain?
 
 - It acts as a global error handler for the entire chain.
 
