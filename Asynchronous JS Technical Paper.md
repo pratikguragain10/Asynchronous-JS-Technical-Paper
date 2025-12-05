@@ -141,7 +141,7 @@
 
 ---
 
-## 10. What are different states of a Promise `pending`, `fulfilled`, `rejected` ?
+## 10. What are different states of a Promise pending, fulfilled, rejected ?
 
 -  | State |	Description |
    | Pending | waiting |
@@ -199,7 +199,7 @@
 
 ---
 
-## 15. What happens when an Error gets thrown inside .then when there is a `.catch` ?
+## 15. What happens when an Error gets thrown inside .then when there is a .catch ?
 
 - If an error is thrown inside `.then`, it immediately skips the remaining `.then` blocks and goes to the nearest `.catch` handler.
 
@@ -212,7 +212,7 @@
 
 ---
 
-## 16. What happens when an Error gets thrown inside `.then` when there is no `.catch` ?
+## 16. What happens when an Error gets thrown inside .then when there is no .catch ?
 
 - If an error is thrown inside `.then` and there is no `.catch`, the promise becomes rejected and results in an unhandled promise rejection.
 
@@ -226,7 +226,7 @@
 
 ---
 
-## 17. Why must `.catch` be placed towards the end of the promise chain?
+## 17. Why must .catch be placed towards the end of the promise chain?
 
 - Because placing `.catch` at the end ensures it can handle any errors that occur in any preceding `.then` block throughout the promise chain.
 
@@ -396,7 +396,7 @@ firstPromise()
 
 ---
 
-## 22. How to promisify an asynchronous callbacks based function - eg `. setTimeout`, `fs.readFile` ?
+## 22. How to promisify an asynchronous callbacks based function - eg . setTimeout, fs.readFile ?
 
 - To promisify an asynchronous callback-based function means to wrap it inside a Promise so you can use .then(), .catch(), or async/await.
 
