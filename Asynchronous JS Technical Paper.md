@@ -284,13 +284,13 @@ firstPromise()
 - ### Using .catch() at the end
 
     ``` javascript
-        doSomething()
-            .then(result => {
-                console.log(result);
-            })
-            .catch(error => {
-                console.error("Error occurred:", error);
-            });
+    doSomething()
+        .then(result => {
+            console.log(result);
+        })
+        .catch(error => {
+            console.error("Error occurred:", error);
+        });
     ```
 
 - Any error thrown in any .then() jumps to .catch().
@@ -298,13 +298,13 @@ firstPromise()
 - ### Chaining with catch
 
     ``` javascript
-        doSomething()
-            .then(result => {
-                if (!result) throw new Error("Invalid result");
-                return doNext(result);
-            })
-            .then(r => console.log(r))
-            .catch(err => console.log("Caught:", err));
+    doSomething()
+        .then(result => {
+            if (!result) throw new Error("Invalid result");
+            return doNext(result);
+        })
+        .then(r => console.log(r))
+        .catch(err => console.log("Caught:", err));
     ```
 
 - ### Using .catch() after specific .then()
@@ -312,11 +312,11 @@ firstPromise()
 - You can isolate error handling to part of the chain:
 
     ``` javascript
-        doStep1()
-            .then(res => doStep2(res))
-            .catch(err => console.log("Error in step 1 or 2"))
-            .then(() => doStep3())
-            .catch(err => console.log("Error in step 3"));
+    doStep1()
+        .then(res => doStep2(res))
+        .catch(err => console.log("Error in step 1 or 2"))
+        .then(() => doStep3())
+        .catch(err => console.log("Error in step 3"));
     ```
 
 - ### Using .finally()
@@ -324,18 +324,18 @@ firstPromise()
 - Used for cleanup (runs whether resolved or rejected):
 
     ``` javascript
-        doTask()
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-            .finally(() => console.log("Done!"));
+    doTask()
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+        .finally(() => console.log("Done!"));
     ```
 
 - ### Handling errors in Promise.all
 
     ``` javascript
-        Promise.all([p1(), p2(), p3()])
-               .then(results => console.log(results))
-               .catch(err => console.log("One promise failed:", err));
+    Promise.all([p1(), p2(), p3()])
+           .then(results => console.log(results))
+           .catch(err => console.log("One promise failed:", err));
     ```
 
 - If any promise rejects → catch is triggered.
@@ -343,16 +343,16 @@ firstPromise()
 - ### Using async/await try–catch
 
     ``` javascript
-        async function run() {
-            try {
-                const r1 = await p1();
-                const r2 = await p2();
-                console.log(r1, r2);
-            } catch (err) {
-                console.error("Error:", err);
-            }
+    async function run() {
+        try {
+            const r1 = await p1();
+            const r2 = await p2();
+            console.log(r1, r2);
+        } catch (err) {
+            console.error("Error:", err);
         }
-        run();
+    }
+    run();
     ```
 
 ---
